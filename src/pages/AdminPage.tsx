@@ -11,7 +11,7 @@ interface Submission {
   email: string;
   phone: string;
   insurance_type: string;
-  message: string;
+  message: string | null;
   created_at: string;
 }
 
@@ -25,15 +25,22 @@ const AdminPage: React.FC = () => {
 
   const loadSubmissions = async () => {
     setLoading(true);
+    console.log('Loading submissions...');
+    
     try {
       const { data, error } = await supabase
         .from('submissions')
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase error:', error);
+        throw error;
+      }
 
-      if (data && data.length > previousCount) {
+      console.log('Loaded submissions:', data);
+
+      if (data && data.length > previousCount && previousCount > 0) {
         playNotification();
         toast.success('Nouvelle demande reçue !');
       }
@@ -41,14 +48,15 @@ const AdminPage: React.FC = () => {
       setPreviousCount(data?.length || 0);
       setSubmissions(data || []);
     } catch (error) {
-      toast.error('Erreur lors du chargement des demandes');
       console.error('Error loading submissions:', error);
+      toast.error('Erreur lors du chargement des demandes');
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
+    // Initial load
     loadSubmissions();
     
     // Set up auto-refresh every 30 seconds
@@ -61,7 +69,8 @@ const AdminPage: React.FC = () => {
         event: '*', 
         schema: 'public', 
         table: 'submissions' 
-      }, () => {
+      }, (payload) => {
+        console.log('Real-time change:', payload);
         loadSubmissions();
       })
       .subscribe();
@@ -80,14 +89,17 @@ const AdminPage: React.FC = () => {
           .delete()
           .eq('id', id);
 
-        if (error) throw error;
+        if (error) {
+          console.error('Delete error:', error);
+          throw error;
+        }
 
         setSubmissions(prev => prev.filter(item => item.id !== id));
         setPreviousCount(prev => prev - 1);
         toast.success('Demande supprimée avec succès');
       } catch (error) {
-        toast.error('Erreur lors de la suppression de la demande');
         console.error('Error deleting submission:', error);
+        toast.error('Erreur lors de la suppression de la demande');
       }
     }
   };
@@ -125,16 +137,30 @@ const AdminPage: React.FC = () => {
     return types[type] || type;
   };
 
+  const getInsuranceTypeColor = (type: string) => {
+    const colors: Record<string, string> = {
+      auto: 'bg-gradient-to-r from-red-500 to-orange-500',
+      sante: 'bg-gradient-to-r from-pink-500 to-rose-500',
+      habitation: 'bg-gradient-to-r from-green-500 to-emerald-500',
+      professionnel: 'bg-gradient-to-r from-blue-500 to-cyan-500',
+      entreprise: 'bg-gradient-to-r from-purple-500 to-indigo-500',
+      prevoyance: 'bg-gradient-to-r from-amber-500 to-yellow-500',
+    };
+    return colors[type] || 'bg-gradient-to-r from-gray-500 to-gray-600';
+  };
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="bg-white rounded-lg shadow-md p-6">
+    <div className="container mx-auto px-4 py-8 bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen">
+      <div className="bg-white rounded-2xl shadow-2xl p-6 border border-white/50">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold text-gray-800">Tableau de bord administrateur</h1>
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            Tableau de bord administrateur
+          </h1>
           <div className="flex items-center space-x-2">
             <span className="text-sm text-gray-500">Actualisation auto. toutes les 30s</span>
             <button
               onClick={loadSubmissions}
-              className="flex items-center text-blue-600 hover:text-blue-800"
+              className="flex items-center text-blue-600 hover:text-purple-600 transition-colors"
             >
               <RefreshCw size={18} className="mr-1" />
               Actualiser
@@ -150,7 +176,7 @@ const AdminPage: React.FC = () => {
             <input
               type="text"
               placeholder="Rechercher par nom, prénom, email ou téléphone..."
-              className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+              className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -163,7 +189,7 @@ const AdminPage: React.FC = () => {
             <p>Chargement des demandes...</p>
           </div>
         ) : filteredSubmissions.length === 0 ? (
-          <div className="text-center py-8 bg-gray-50 rounded-lg">
+          <div className="text-center py-8 bg-gradient-to-br from-gray-50 to-blue-50 rounded-lg">
             <p className="text-gray-600">
               {searchTerm ? 'Aucun résultat pour cette recherche' : 'Aucune demande de devis pour le moment'}
             </p>
@@ -171,7 +197,7 @@ const AdminPage: React.FC = () => {
         ) : (
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+              <thead className="bg-gradient-to-r from-gray-50 to-blue-50">
                 <tr>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Date
@@ -198,7 +224,7 @@ const AdminPage: React.FC = () => {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {filteredSubmissions.map((submission) => (
-                  <tr key={submission.id} className="hover:bg-gray-50">
+                  <tr key={submission.id} className="hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       {formatDate(submission.created_at)}
                     </td>
@@ -217,7 +243,7 @@ const AdminPage: React.FC = () => {
                       <div className="text-sm text-gray-500">{submission.phone}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                      <span className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full text-white ${getInsuranceTypeColor(submission.insurance_type)}`}>
                         {getInsuranceTypeLabel(submission.insurance_type)}
                       </span>
                     </td>
@@ -229,7 +255,7 @@ const AdminPage: React.FC = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <button
                         onClick={() => handleDelete(submission.id)}
-                        className="text-red-600 hover:text-red-900"
+                        className="text-red-600 hover:text-red-900 p-2 rounded-lg hover:bg-red-50 transition-colors"
                         title="Supprimer"
                       >
                         <Trash2 size={18} />
