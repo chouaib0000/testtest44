@@ -38,14 +38,14 @@ const HeroSection: React.FC = () => {
             <br className="hidden md:block" />
             Bénéficiez d'une <span className="text-cyan-300 font-semibold">protection optimale</span> avec les meilleures offres.
           </p>
-          <a 
-            href="#quote-form" 
-            className="inline-flex items-center px-10 py-5 bg-gradient-to-r from-orange-500 via-pink-500 to-red-500 hover:from-orange-600 hover:via-pink-600 hover:to-red-600 text-white font-bold text-lg rounded-xl transition-all transform hover:scale-110 shadow-2xl hover:shadow-3xl border-2 border-white/20"
-          >
-            <span className="mr-3">🚀</span>
-            Obtenir mon devis gratuit
-            <ArrowRight size={24} className="ml-3" />
-          </a>
+        <a 
+  href="#quote-form" 
+  className="inline-flex items-center px-12 py-6 bg-gradient-to-r from-orange-400 via-rose-400 to-red-400 hover:from-orange-500 hover:via-rose-500 hover:to-red-500 text-white text-xl font-bold rounded-2xl transition-all transform hover:scale-105 shadow-xl hover:shadow-2xl border border-white/20"
+>
+  <span className="mr-4 text-2xl">🚀</span>
+  Obtenir mon devis gratuit
+  <ArrowRight size={28} className="ml-4" />
+</a>
         </div>
       </div>
     </section>
