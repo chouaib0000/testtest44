@@ -128,9 +128,12 @@ const AdminPage: React.FC = () => {
   const getInsuranceTypeLabel = (type: string) => {
     const types: Record<string, string> = {
       auto: 'Auto & Moto',
+      'rc-decennale': 'RC Décennale',
+      'auto-pro': 'Auto Professionnelle',
+      'flotte': 'Flotte Véhicules',
+      'rc-pro': 'RC Pro',
       sante: 'Santé',
       habitation: 'Habitation',
-      professionnel: 'RC Pro',
       entreprise: 'Multirisque Entreprise',
       prevoyance: 'Prévoyance & Retraite',
     };
@@ -140,9 +143,12 @@ const AdminPage: React.FC = () => {
   const getInsuranceTypeColor = (type: string) => {
     const colors: Record<string, string> = {
       auto: 'bg-gradient-to-r from-red-500 to-orange-500',
+      'rc-decennale': 'bg-gradient-to-r from-amber-500 to-yellow-500',
+      'auto-pro': 'bg-gradient-to-r from-blue-500 to-cyan-500',
+      'flotte': 'bg-gradient-to-r from-green-500 to-emerald-500',
+      'rc-pro': 'bg-gradient-to-r from-purple-500 to-indigo-500',
       sante: 'bg-gradient-to-r from-pink-500 to-rose-500',
       habitation: 'bg-gradient-to-r from-green-500 to-emerald-500',
-      professionnel: 'bg-gradient-to-r from-blue-500 to-cyan-500',
       entreprise: 'bg-gradient-to-r from-purple-500 to-indigo-500',
       prevoyance: 'bg-gradient-to-r from-amber-500 to-yellow-500',
     };

@@ -208,9 +208,12 @@ const QuoteForm: React.FC = () => {
                     required
                   >
                     <option value="auto">🚗 Assurance Auto & Moto</option>
+                    <option value="rc-decennale">🏗️ RC Décennale</option>
+                    <option value="auto-pro">🚕 Assurance Auto Professionnelle</option>
+                    <option value="flotte">🚛 Assurance Flotte de Véhicules</option>
+                    <option value="rc-pro">🛡️ Responsabilité Civile Pro</option>
                     <option value="sante">❤️ Assurance Santé</option>
                     <option value="habitation">🏠 Assurance Habitation</option>
-                    <option value="professionnel">🛡️ Responsabilité Civile Pro</option>
                     <option value="entreprise">💼 Multirisque Entreprise</option>
                     <option value="prevoyance">📈 Prévoyance & Retraite</option>
                   </select>
