@@ -7,7 +7,9 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import AdminPage from './pages/AdminPage';
 import LoginPage from './pages/LoginPage';
+import InsuranceDetailPage from './pages/InsuranceDetailPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import Chatbot from './components/Chatbot';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -23,6 +25,7 @@ function App() {
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/assurance/:type" element={<InsuranceDetailPage />} />
           <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
           <Route 
             path="/admin" 
@@ -35,6 +38,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <Chatbot />
     </div>
   );
 }

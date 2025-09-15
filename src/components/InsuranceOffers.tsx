@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Car, Heart, Home, Shield, Briefcase, TrendingUp, Truck, HardHat, Users } from 'lucide-react';
 
 const insuranceTypes = [
   {
+    type: 'auto-moto',
     title: "Assurance Auto & Moto",
     icon: <Car className="h-14 w-14 text-white drop-shadow-lg" />,
     description: "Protection complète pour tous profils : bons conducteurs, risques aggravés, malussés, résiliés. Solutions adaptées à chaque situation.",
@@ -17,6 +19,7 @@ const insuranceTypes = [
     ]
   },
   {
+    type: 'rc-decennale',
     title: "RC Décennale",
     icon: <HardHat className="h-14 w-14 text-white drop-shadow-lg" />,
     description: "Couverture des dommages et risques liés à votre activité professionnelle. Pour maîtres d'œuvre, artisans et architectes.",
@@ -31,6 +34,7 @@ const insuranceTypes = [
     ]
   },
   {
+    type: 'auto-professionnelle',
     title: "Assurance Auto Professionnelle",
     icon: <Truck className="h-14 w-14 text-white drop-shadow-lg" />,
     description: "Solutions spécialement conçues pour les chauffeurs professionnels VTC, taxis, transporteurs. Couverture complète avec un excellent rapport qualité-prix.",
@@ -45,6 +49,7 @@ const insuranceTypes = [
     ]
   },
   {
+    type: 'flotte-vehicules',
     title: "Assurance Flotte de Véhicules",
     icon: <Users className="h-14 w-14 text-white drop-shadow-lg" />,
     description: "Nous nous engageons à assurer votre parc de véhicules (commerciaux, utilitaires, engins de chantier) avec un seul contrat aux prix les plus compétitifs.",
@@ -59,6 +64,7 @@ const insuranceTypes = [
     ]
   },
   {
+    type: 'rc-professionnelle',
     title: "Responsabilité Civile Pro",
     icon: <Shield className="h-14 w-14 text-white drop-shadow-lg" />,
     description: "Nous vous garantissons une meilleure assurance qui couvre les dommages matériels, immatériels et corporels causés dans le cadre de votre activité.",
@@ -73,6 +79,7 @@ const insuranceTypes = [
     ]
   },
   {
+    type: 'sante',
     title: "Assurance Santé",
     icon: <Heart className="h-14 w-14 text-white drop-shadow-lg" />,
     description: "Couverture médicale optimale pour vous et votre famille, avec des remboursements adaptés à vos besoins et votre budget.",
@@ -87,6 +94,7 @@ const insuranceTypes = [
     ]
   },
   {
+    type: 'habitation',
     title: "Assurance Habitation",
     icon: <Home className="h-14 w-14 text-white drop-shadow-lg" />,
     description: "Protégez votre logement et vos biens contre les sinistres avec des garanties personnalisées selon vos besoins.",
@@ -101,6 +109,7 @@ const insuranceTypes = [
     ]
   },
   {
+    type: 'multirisque-entreprise',
     title: "Multirisque Entreprise",
     icon: <Briefcase className="h-14 w-14 text-white drop-shadow-lg" />,
     description: "Solution complète pour protéger votre entreprise, vos locaux, et votre activité avec une couverture adaptée à votre secteur.",
@@ -115,6 +124,7 @@ const insuranceTypes = [
     ]
   },
   {
+    type: 'prevoyance-retraite',
     title: "Prévoyance & Retraite",
     icon: <TrendingUp className="h-14 w-14 text-white drop-shadow-lg" />,
     description: "Préparez votre avenir avec nos solutions d'épargne et de prévoyance personnalisées pour une retraite sereine.",
@@ -194,9 +204,12 @@ const InsuranceOffers: React.FC = () => {
                 </div>
                 
                 <div className="mt-auto text-center">
-                  <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30 inline-block">
+                  <Link 
+                    to={`/assurance/${insurance.type}`}
+                    className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30 inline-block hover:bg-white/30 transition-colors"
+                  >
                     <span className="text-white font-semibold text-sm">En savoir plus</span>
-                  </div>
+                  </Link>
                 </div>
               </div>
             </div>
