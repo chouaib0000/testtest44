@@ -50,7 +50,7 @@ const insuranceTypes = [
     type: 'flotte-vehicules',
     title: "Assurance Flotte de Véhicules",
     icon: <Users className="h-14 w-14 text-white drop-shadow-lg" />,
-    description: "Nous nous engageons à assurer votre parc de véhicules avec un seul contrat en vous permettant d'avoir prix les plus compétitifs.",
+    description: "Nous nous engageons à assurer votre parc avec un seul contrat avec les prix les plus compétitifs.",
     backgroundImage: "/assets/auto-insurance-bg.jpg",
     gradient: "from-green-600/40 to-emerald-600/40",
     emoji: "🚛",
