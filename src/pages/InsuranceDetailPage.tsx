@@ -151,7 +151,7 @@ const insuranceDetails: Record<string, InsuranceDetail> = {
   },
   'flotte-vehicules': {
     title: 'Assurance Flotte de Véhicules',
-    description: 'Nous nous engageons à assurer votre parc avec un seul contrat aux prix les plus compétitifs.',
+    description: 'Nous nous engageons à assurer votre parc avec un seul contrat avec les prix les plus compétitifs.',
     emoji: '🚛',
     features: [
       'Contrat unique multi-véhicules',
