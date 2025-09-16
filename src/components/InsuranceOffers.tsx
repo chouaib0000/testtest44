@@ -69,10 +69,10 @@ const insuranceTypes = [
     gradient: "from-purple-600/40 to-indigo-600/40",
     emoji: "🛡️",
     details: [
-      "Dommages matériels",
-      "Dommages immatériels",
-      "Dommages corporels",
-      "Couverture activité professionnelle"
+       "Protection entreprise",
+      "Locaux professionnels",
+      "Activité commerciale",
+      "Couverture secteur"
     ]
   },
   {
