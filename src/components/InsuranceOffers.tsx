@@ -7,60 +7,57 @@ const insuranceTypes = [
     type: 'auto-moto',
     title: "Assurance Auto & Moto",
     icon: <Car className="h-14 w-14 text-white drop-shadow-lg" />,
-    description: "Protection complète pour tous profils : bons conducteurs, risques aggravés, malussés, résiliés. Solutions adaptées à chaque situation.",
+    description: "Protection complète pour tous les profils avec des Solutions adaptées à chaque situation.",
     backgroundImage: "/assets/auto-insurance-bg.jpg",
     gradient: "from-red-600/40 to-orange-600/40",
     emoji: "🚗",
     details: [
       "Bons conducteurs",
-      "Risques aggravés", 
+      "Risques aggravés",
       "Malussés",
-      "Résiliés"
+      "Résiliés ..."
     ]
   },
   {
     type: 'rc-decennale',
     title: "RC Décennale",
     icon: <HardHat className="h-14 w-14 text-white drop-shadow-lg" />,
-    description: "Couverture des dommages et risques liés à votre activité professionnelle. Pour maîtres d'œuvre, artisans et architectes.",
+    description: "Couverture des dommages et risques liés à votre activité professionnelle.",
     backgroundImage: "/assets/professional-insurance-bg.jpg",
     gradient: "from-amber-600/40 to-yellow-600/40",
     emoji: "🏗️",
     details: [
       "Maîtres d'œuvre",
       "Artisans",
-      "Architectes",
-      "Couverture décennale"
+      "Architectes ..."
     ]
   },
   {
     type: 'auto-professionnelle',
     title: "Assurance Auto Professionnelle",
     icon: <Truck className="h-14 w-14 text-white drop-shadow-lg" />,
-    description: "Solutions spécialement conçues pour les chauffeurs professionnels VTC, taxis, transporteurs. Couverture complète avec un excellent rapport qualité-prix.",
+    description: "Nous proposons des Solutions spécialement conçues pour les chauffeurs professionnels couvrant tous les risques liés à votre activité avec un bon rapport qualité prix.",
     backgroundImage: "/assets/business-insurance-bg.jpg",
     gradient: "from-blue-600/40 to-cyan-600/40",
     emoji: "🚕",
     details: [
-      "VTC & Taxis",
-      "Transporteurs",
-      "Chauffeurs professionnels",
-      "Rapport qualité-prix optimal"
+      "VTC",
+      "Taxis",
+      "Transporteurs ..."
     ]
   },
   {
     type: 'flotte-vehicules',
     title: "Assurance Flotte de Véhicules",
     icon: <Users className="h-14 w-14 text-white drop-shadow-lg" />,
-    description: "Nous nous engageons à assurer votre parc de véhicules (commerciaux, utilitaires, engins de chantier) avec un seul contrat aux prix les plus compétitifs.",
+    description: "Nous nous engageons à assurer votre parc de véhicules avec un seul contrat en vous permettant d'avoir prix les plus compétitifs.",
     backgroundImage: "/assets/auto-insurance-bg.jpg",
     gradient: "from-green-600/40 to-emerald-600/40",
     emoji: "🚛",
     details: [
       "Véhicules commerciaux",
-      "Véhicules utilitaires", 
-      "Engins de chantier",
-      "Contrat unique"
+      "Véhicules utilitaires",
+      "Engins de chantier ..."
     ]
   },
   {
