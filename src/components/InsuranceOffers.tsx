@@ -105,21 +105,7 @@ const insuranceTypes = [
       "Sinistres couverts"
     ]
   },
-  {
-    type: 'multirisque-entreprise',
-    title: "Multirisque Entreprise",
-    icon: <Briefcase className="h-14 w-14 text-white drop-shadow-lg" />,
-    description: "Solution complète pour protéger votre entreprise, vos locaux, et votre activité avec une couverture adaptée à votre secteur.",
-    backgroundImage: "/assets/business-insurance-bg.jpg",
-    gradient: "from-indigo-600/40 to-purple-600/40",
-    emoji: "💼",
-    details: [
-      "Protection entreprise",
-      "Locaux professionnels",
-      "Activité commerciale",
-      "Couverture secteur"
-    ]
-  },
+ 
   {
     type: 'prevoyance-retraite',
     title: "Prévoyance & Retraite",
